@@ -1,13 +1,14 @@
 package com.cst2335.plat0039;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.EditText;
+import android.provider.MediaStore;
+import android.content.Intent;
+import android.os.Bundle;
+import android.graphics.Bitmap;
 import android.widget.ImageButton;
+import android.widget.EditText;
+import android.util.Log;
+
 
 public class ProfileActivity extends AppCompatActivity {
 

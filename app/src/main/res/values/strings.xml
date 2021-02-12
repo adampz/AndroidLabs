@@ -9,6 +9,6 @@
     <string name="Profile">Your Profile</string>
     <string name="yourEmail">Your email:</string>
     <string name="inputEmail">Enter your email</string>
-    <string name="Pic">Your Picture:</string>
+    <string name="Pics">Your Picture:</string>
     <string name="Picture">Click the button above to take a picture</string>
 </resources>
