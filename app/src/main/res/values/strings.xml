@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">AndroidLabs</string>
-    <string name="typeEmail">Enter your email address:</string>
-    <string name="typePass">Type your password:</string>
-    <string name="emailHere">Type email here</string>
-    <string name="loginButton">LOGIN</string>
-    <string name="profile">Your Profile</string>
-    <string name="name">Your Name:</string>
-    <string name="inputName">Enter your Name</string>
-    <string name="email">Your email:</string>
+    <string name="insertEmail">Enter your email address:</string>
+    <string name="insertPassword">Type your password:</string>
+    <string name="putEmail">Type email here</string>
+    <string name="loginBtn">LOGIN</string>
+    <string name="Name">Your Name:</string>
+    <string name="putName">Enter your Name</string>
+    <string name="Profile">Your Profile</string>
+    <string name="yourEmail">Your email:</string>
     <string name="inputEmail">Enter your email</string>
-    <string name="pic">Your Picture:</string>
-    <string name="picText">Click the button above to take a picture</string>
+    <string name="Pic">Your Picture:</string>
+    <string name="Picture">Click the button above to take a picture</string>
 </resources>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidLabs</string>
-    <string name="typeEmail">Daj twoj email address:</string>
-    <string name="typePass">tyskie twoj haslo:</string>
-    <string name="emailHere">daj email tutaj</string>
-    <string name="loginButton">Czasem</string>
-    <string name="profile">twoj piekna</string>
-    <string name="name">twoj imie:</string>
-    <string name="inputName">zobacz twoj imie</string>
-    <string name="email">twoj email:</string>
+    <string name="insertEmail">Daj twoj email address:</string>
+    <string name="insertPassword">tyskie twoj haslo:</string>
+    <string name="putEmail">daj email tutaj</string>
+    <string name="loginBtn">Czasem</string>
+    <string name="Name">twoj imie:</string>
+    <string name="putName">zobacz twoj imie</string>
+    <string name="Profile">twoj piekna</string>
+    <string name="yourEmail">twoj email:</string>
     <string name="inputEmail">pisz twoj email</string>
-    <string name="pic">twoj zdiejcza:</string>
-    <string name="picText">kliknij przycisk powyżej, aby zrobić zdjęcie</string>
+    <string name="Pic">twoj zdiejcza:</string>
+    <string name="Picture">kliknij przycisk powyżej, aby zrobić zdjęcie</string>
 </resources>
