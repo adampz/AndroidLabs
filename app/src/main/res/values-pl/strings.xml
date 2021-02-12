@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">lab2</string>
-    <string name="textView">Spojrz na moj GUI</string>
-    <string name="ButtonText">Kliknij tutaj</string>
-    <string name="SwitchText">Wlaczac/wylaczyc</string>
-    <string name="EditText">Pisz tutaj</string>
-    <string name="checkBoxText">Spojrz na to!</string>
-    <string name="hint_message">Pisz tutaj</string>
-    <string name="toast">Tutaj jest wiecej informacji</string>
-    <string name="snackBar">Przelacznik jest teraz</string>
-    <string name="on">Otwarte</string>
+    <string name="app_name">AndroidLabs</string>
+    <string name="typeEmail">Daj twoj email address:</string>
+    <string name="typePass">tyskie twoj haslo:</string>
+    <string name="emailHere">daj email tutaj</string>
+    <string name="loginButton">Czasem</string>
+    <string name="profile">twoj piekna</string>
+    <string name="name">twoj imie:</string>
+    <string name="inputName">zobacz twoj imie</string>
+    <string name="email">twoj email:</string>
+    <string name="inputEmail">pisz twoj email</string>
+    <string name="pic">twoj zdiejcza:</string>
+    <string name="picText">kliknij przycisk powyżej, aby zrobić zdjęcie</string>
 </resources>
