@@ -15,20 +15,20 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/typeEmail"/>
+            android:text="@string/insertEmail"/>
 
         <EditText
             android:id="@+id/editView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/emailHere"/>
+            android:hint="@string/putEmail"/>
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/typePass"/>
+            android:text="@string/insertPassword"/>
 
         <EditText
             android:id="@+id/editView1"
@@ -40,7 +40,7 @@
             android:id="@+id/buttonz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/loginButton"
+            android:text="@string/loginBtn"
             android:textColor="@android:color/black"/>
 
     </LinearLayout>

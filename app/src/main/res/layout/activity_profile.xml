@@ -17,13 +17,13 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/profile"/>
+            android:text="@string/Profile"/>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name"/>
+            android:text="@string/Name"/>
 
         <EditText
             android:inputType="textPersonName|textCapWords"
@@ -31,13 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textSize="20sp"
-            android:hint="@string/inputName"/>
+            android:hint="@string/putName"/>
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/email"/>
+            android:text="@string/yourEmail"/>
 
         <EditText
             android:inputType="textEmailAddress"
@@ -51,7 +51,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pic"/>
+            android:text="@string/Pic"/>
 
         <ImageButton
             android:id="@+id/buttonz"
@@ -63,6 +63,6 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/picText"/>
+            android:text="@string/Picture"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
