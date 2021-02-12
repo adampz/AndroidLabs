@@ -1,34 +1,38 @@
 package com.cst2335.plat0039;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.EditText;
+import android.provider.MediaStore;
+import android.content.Intent;
+import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.EditText;
+import android.util.Log;
+
 
 public class ProfileActivity extends AppCompatActivity {
 
     private static final String ACTIVITY_NAME = "PROFILE";
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private View PicBtn;
+    private View ChatRoomButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        EditText emailEditText = (EditText)findViewById(R.id.editText1) ;
+        Log.d(ACTIVITY_NAME, "processing: onCreate()");
 
-        Intent fromMain = getIntent();
-        String receivedEmail= fromMain.getStringExtra("e-mail");
+        Intent Main = getIntent();
+        EditText emailEditText = (EditText)findViewById(R.id.editText1) ;
+        String receivedEmail= Main.getStringExtra("e-mail");
         emailEditText.setText(receivedEmail);
 
-
-        ImageButton PicBtn = (ImageButton) findViewById(R.id.buttonz);
+        ImageButton PicBtn = (ImageButton) findViewById(R.id.button);
         PicBtn.setOnClickListener(c -> {
-
 
             Intent picture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             if (picture.resolveActivity(getPackageManager()) != null) {
@@ -36,17 +40,26 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        Button ChatRoomButton = (Button) findViewById(R.id.buttonz);
+        ChatRoomButton.setOnClickListener(c -> {
+
+            Intent openChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            startActivity(openChat);
+        });
+
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d(ACTIVITY_NAME, "processing: onActivityResult()");
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("Data");
-            ImageButton PicBtn = (ImageButton) findViewById(R.id.buttonz);
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ImageButton PicBtn = (ImageButton) findViewById(R.id.button);
             PicBtn.setImageBitmap(imageBitmap);
         }
-        Log.d(ACTIVITY_NAME, "processing: onActivityResult()");
     }
     @Override
     protected void onStart() {

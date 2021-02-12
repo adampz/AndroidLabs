@@ -10,6 +10,10 @@
     <string name="Profile">twoj piekna</string>
     <string name="yourEmail">twoj email:</string>
     <string name="inputEmail">pisz twoj email</string>
-    <string name="Pic">twoj zdiejcza:</string>
+    <string name="Pics">twoj zdiejcza:</string>
     <string name="Picture">kliknij przycisk powyżej, aby zrobić zdjęcie</string>
+    <string name="Sendz">Send</string>
+    <string name="ghost">Type here</string>
+    <string name="Receivez">Go To Chat</string>
+    <string name="crButton">Idziesz na Gora</string>
 </resources>

@@ -1,11 +1,11 @@
 package com.cst2335.plat0039;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.Intent;
 import android.widget.Button;
+import android.content.Context;
+import android.os.Bundle;
 import android.widget.EditText;
 
 
