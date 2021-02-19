@@ -1,107 +1,104 @@
 package com.cst2335.plat0039;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.view.View;
+import android.os.Bundle;
+import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ListAdapter;
+import java.util.ArrayList;
+import android.widget.Button;
+import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 public class ChatRoomActivity extends AppCompatActivity {
 
-    EditText ET;
-    ListView LV;
     Button Send;
     Button Receive;
-    List<Message> Msgs = new ArrayList<>();
-
+    ArrayList<Message> elements = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
-        ET=(EditText)findViewById(R.id.Msgs);
-        LV=(ListView)findViewById(R.id.Chats);
-        Receive=(Button)findViewById(R.id.Receive);
-        Send=(Button)findViewById(R.id.Send);
-        ListView myList = (ListView) findViewById(R.id.ListView);
+        Receive = (Button) findViewById(R.id.Receive);
+        Send = (Button) findViewById(R.id.Send);
+        ListView myList = (ListView) findViewById(R.id.Chats);
+        MyListAdapter myAdapter;
+        myList.setAdapter(myAdapter = new MyListAdapter());
 
-
-        Receive.setOnClickListener(new View.OnClickListener() {
-            @Override
-                    public void onClick(View a){
-                String sender = ET.getText().toString();
-                Message keeper = new Message(sender);
-                Msgs.add(keeper);
-                ArrayAdapter<List> ab = new ArrayAdapter<List>(this,R.layout.activity_chat_room, Msgs);
-                LV.setAdapter(ab);
-            }
+        Receive.setOnClickListener(c -> {
+            EditText msg = (EditText) findViewById(R.id.Msgs);
+            String msgTxt = msg.getText().toString();
+            Message msgCommit = new Message(msgTxt, false);
+            elements.add(msgCommit);
+            myAdapter.notifyDataSetChanged();
+            msg.setText("");
         });
 
-        Send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View b){
-                String receiver = ET.getText().toString();
-                Message keeper = new Message(receiver);
-                Msgs.add(keeper);
-                ArrayAdapter<List> ab = new ArrayAdapter<List>(this,R.layout.activity_chat_room, Msgs);
-                LV.setAdapter(ab);
+        Send.setOnClickListener(c -> {
+            EditText msg = (EditText) findViewById(R.id.Msgs);
+            String msgTxt = msg.getText().toString();
+            Message messageCommit = new Message(msgTxt, true);
+            elements.add(messageCommit);
+            myAdapter.notifyDataSetChanged();
+            msg.setText("");
+        });
+
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                new AlertDialog.Builder(ChatRoomActivity.this)
+                        .setTitle(getResources().getString(R.string.Delete))
+                        .setMessage(getResources().getString(R.string.row_msg) + position + "\n" + getResources().getString(R.string.db_id) + id)
+                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                            elements.remove(position);
+                            myAdapter.notifyDataSetChanged();
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .show();
             }
         });
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGRoup parent){
 
-        LayoutInflater inflater = getLayoutInflater();
-        View newView;
-        TextView tView;
-        if (messageList.get(position).getType().equals(MessageType.SEND)) {
-            newView = inflater.inflate(R.layout.row_send, parent, false);
-            tView = newView.findViewById(R.id.sendText);
-        } else {
-            newView = inflater.inflate(R.layout.row_receive, parent, false);
-            tView = newView.findViewById(R.id.receiveText);
-        }
-        tView.setText(getItem(position).toString());
-        EditText text = findViewById(R.id.chatText);
-        text.setText("");
-
-        //return it to be put in the table
-        return newView;
-    }
-
-        class MyListAdapter extends BaseAdapter {
-        private final ArrayList<String> elements = new ArrayList<>();
-        @Override
-        public int getCount(){
-            return elements.size();
-        }
+    public class MyListAdapter extends BaseAdapter {
 
         @Override
-        public Object getItem(int i){
-            int position = 0;
+        public Message getItem(int position) {
             return elements.get(position);
         }
 
         @Override
-        public long getItemId(int i){
-            Object position = null;
-            return (long)position;
+        public long getItemId(int position) {
+            return (long) position;
         }
 
+        @Override
+        public int getCount() {
+            return elements.size();
         }
 
+        @Override
+        public View getView(int position, View old, ViewGroup parent) {
+
+            Message msg = (Message) getItem(position);
+            LayoutInflater flater = getLayoutInflater();
+            View viewz = old;
+
+
+            if (msg.isSendType() == true) {
+                viewz = flater.inflate(R.layout.row_sender, parent, false);
+            } else if (msg.isSendType() == false) {
+                viewz = flater.inflate(R.layout.row_receiver, parent, false);
+            }
+
+            TextView TV = viewz.findViewById(R.id.chatList);
+            TV.setText(msg.getMessage());
+            return viewz;
+        }
     }
+}

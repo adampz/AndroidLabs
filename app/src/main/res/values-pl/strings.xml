@@ -16,4 +16,7 @@
     <string name="ghost">Type here</string>
     <string name="Receivez">Go To Chat</string>
     <string name="crButton">Idziesz na Gora</string>
+    <string name="Delete">Delete</string>
+    <string name="row_msg">j</string>
+    <string name="db_id">j</string>
 </resources>

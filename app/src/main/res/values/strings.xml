@@ -13,6 +13,9 @@
     <string name="Picture">Click the button above to take a picture</string>
     <string name="Sendz">Send</string>
     <string name="ghost">Type here</string>
-    <string name="Receivez">Go To Chat</string>
+    <string name="Receivez">Receive</string>
     <string name="crButton">Go To Chat</string>
+    <string name="Delete">Delete</string>
+    <string name="row_msg">j</string>
+    <string name="db_id">j</string>
 </resources>

@@ -8,8 +8,7 @@ public class Message {
         this.msg = msg;
     }
 
-    public Message (){
-
+    public Message(String messageText, boolean b) {
     }
 
     public String getMessage(){
@@ -20,4 +19,7 @@ public class Message {
         this.msg = msg;
     }
 
+    public boolean isSendType() {
+        return isSendType();
+    }
 }
