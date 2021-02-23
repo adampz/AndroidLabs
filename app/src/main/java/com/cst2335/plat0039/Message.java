@@ -3,12 +3,12 @@ package com.cst2335.plat0039;
 public class Message {
 
     private String msg;
+    boolean isSend;
 
-    public Message(String msg){
-        this.msg = msg;
-    }
 
     public Message(String messageText, boolean b) {
+        msg = messageText;
+        isSend = b;
     }
 
     public String getMessage(){
@@ -20,6 +20,6 @@ public class Message {
     }
 
     public boolean isSendType() {
-        return isSendType();
+        return isSend;
     }
 }

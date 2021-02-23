@@ -90,13 +90,13 @@ public class ChatRoomActivity extends AppCompatActivity {
             View viewz = old;
 
 
-            if (msg.isSendType() == true) {
+            if (msg.isSendType() ) {
                 viewz = flater.inflate(R.layout.row_sender, parent, false);
-            } else if (msg.isSendType() == false) {
+            } else  {
                 viewz = flater.inflate(R.layout.row_receiver, parent, false);
             }
 
-            TextView TV = viewz.findViewById(R.id.chatList);
+            TextView TV = viewz.findViewById(R.id.Sender);
             TV.setText(msg.getMessage());
             return viewz;
         }
