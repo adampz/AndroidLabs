@@ -3,7 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
-
+    <TextView
+        android:id="@+id/Sender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_weight="1"
+        android:textAlignment="gravity"/>
 
 
     <ImageView
@@ -11,10 +17,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/row_receive" />
-    <TextView
-        android:id="@+id/Sender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:textAlignment="gravity"/>
+
 </LinearLayout>
