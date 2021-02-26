@@ -16,6 +16,7 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 public class ChatRoomActivity extends AppCompatActivity {
 
+    private static final String ACTIVITY_NAME = null;
     Button Send;
     Button Receive;
     ArrayList<Message> msgsArray = new ArrayList<>();
@@ -44,6 +46,9 @@ public class ChatRoomActivity extends AppCompatActivity {
         loadMessagesFromDatabase();
         myAdapter = new MyListAdapter();
         myList.setAdapter(myAdapter = new MyListAdapter());
+        String[] columns = {DBmessages.COL_ID, DBmessages.COL_MESSAGES,DBmessages.COL_SENDORRECEIVE};
+        Cursor results = db.query(false, DBmessages.TABLE_NAME, columns, null, null, null, null, null, null);
+
 
         myList.setOnItemClickListener((parent, view, position, id) -> {
             showMessage(position);
@@ -110,7 +115,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
         // We want to get all of the columns. Look at MyOpener.java for the definitions:
-        String [] columns = {DBmessages.COL_ID, DBmessages.COL_SENDORRECEIVE, DBmessages.COL_MESSAGES};
+        String [] columns = {DBmessages.COL_ID, DBmessages.COL_MESSAGES,DBmessages.COL_SENDORRECEIVE};
         //query all the results from the database:
         Cursor results = db.query(false, DBmessages.TABLE_NAME, columns, null, null, null, null, null, null);
 
@@ -120,8 +125,6 @@ public class ChatRoomActivity extends AppCompatActivity {
         //int nameColIndex = results.getColumnIndex(DBmessages.COL_NAME);
         int idColIndex = results.getColumnIndex(DBmessages.COL_ID);
 
-        //ContentValues.put(DBmessages.COL_MESSAGES);
-       // ContentValues.put(DBmessages.COL_SENDORRECEIVE);
         //iterate over the results, return true if there is a next item:
         while(results.moveToNext())
         {
@@ -155,7 +158,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                 .create().show();
     }
 
-    protected void updateContact(Message m)
+    protected void updateMessage(Message m)
     {
         //Create a ContentValues object to represent a database row:
         ContentValues updatedValues = new ContentValues();
@@ -166,7 +169,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         db.update(DBmessages.TABLE_NAME, updatedValues, DBmessages.COL_ID + "= ?", new String[] {Long.toString(m.getId())});
     }
 
-    protected void deleteContact(Message m)
+    protected void deleteMessage(Message m)
     {
         db.delete(DBmessages.TABLE_NAME, DBmessages.COL_ID + "= ?", new String[] {Long.toString(m.getId())});
     }
@@ -213,5 +216,6 @@ public class ChatRoomActivity extends AppCompatActivity {
                     + "\nColumn Names: " + Arrays.toString(c.getColumnNames())
                     + "\nNumber of rows: " + c.getCount());
         }
+
     }
 }

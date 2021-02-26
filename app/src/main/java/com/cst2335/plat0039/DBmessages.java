@@ -14,47 +14,44 @@ import java.util.Arrays;
 public class DBmessages extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "DBmessages";
-    public static final int VERSION_NUM = 1;
-    public final static String TABLE_NAME = "Chat Messages";
+    public static final int VERSION_NUM = 2;
+    public final static String TABLE_NAME = "ChatMessages";
     public final static String COL_ID = "_id";
     public final static String COL_MESSAGES = "Messages";
     public final static String COL_SENDORRECEIVE = "TYPE";
     public final String[] columns = {COL_MESSAGES, COL_SENDORRECEIVE, COL_ID};
     private Object MessageType;
 
-    public DBmessages(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
 
-    DBmessages(Context ctx){
+    public DBmessages(Context ctx){
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }
 
-    public void onCreate(SQLiteDatabase SQLdb){
-        SQLdb.execSQL("CREATE TABLE " + TABLE_NAME + "( "
-                + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COL_MESSAGES + " TEXT,"
-                + COL_SENDORRECEIVE + " INTEGER);");
+    @Override
+    public void onCreate(SQLiteDatabase db)
+    {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_MESSAGES + " text,"
+                + COL_SENDORRECEIVE  + " text);");  // add or remove columns
     }
+    /*public void onCreate(SQLiteDatabase SQLdb){
+        SQLdb.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COL_MESSAGES + " text,"
+                + COL_SENDORRECEIVE + " text);");
+    }*/
 
-
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.i("Database Upgrade", "Old Version:" + oldVersion + " newVersion:"+newVersion);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(sqLiteDatabase);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.i("Database downgrade", "Old Version:" + oldVersion + " newVersion:"+newVersion);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 
-    public void onDowngrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        Log.i("Database downgrade", "Old Version:" + oldVersion + " newVersion:"+newVersion);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(sqLiteDatabase);
-    }
-    private void printCursor(Cursor c, int version) {
-        Log.i("printCursor", "DB version number: " + version
-                + "\nNumber of columns: "
-                + c.getColumnCount()
-                + "\nColumn Names: " + Arrays.toString(c.getColumnNames())
-                + "\nNumber of rows: " + c.getCount());
-    }
 }
 
